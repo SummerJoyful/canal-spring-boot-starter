@@ -1,0 +1,60 @@
+{
+  "groups": [
+    {
+      "name": "canal",
+      "type": "cn.ricardo.starter.properties.CanalProperties",
+      "sourceType": "cn.ricardo.starter.properties.CanalProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "canal.batch-size",
+      "type": "java.lang.Integer",
+      "description": "获取数据条数",
+      "sourceType": "cn.ricardo.starter.properties.CanalProperties"
+    },
+    {
+      "name": "canal.destination",
+      "type": "java.lang.String",
+      "description": "描述",
+      "sourceType": "cn.ricardo.starter.properties.CanalProperties"
+    },
+    {
+      "name": "canal.filter",
+      "type": "java.lang.String",
+      "description": "过滤(格式 {database}.{table})",
+      "sourceType": "cn.ricardo.starter.properties.CanalProperties"
+    },
+    {
+      "name": "canal.host",
+      "type": "java.lang.String",
+      "description": "canal-server地址",
+      "sourceType": "cn.ricardo.starter.properties.CanalProperties"
+    },
+    {
+      "name": "canal.password",
+      "type": "java.lang.String",
+      "description": "密码，如果不设置，默认为\"\"",
+      "sourceType": "cn.ricardo.starter.properties.CanalProperties"
+    },
+    {
+      "name": "canal.port",
+      "type": "java.lang.Integer",
+      "description": "canal-server端口",
+      "sourceType": "cn.ricardo.starter.properties.CanalProperties"
+    },
+    {
+      "name": "canal.sleep-millis",
+      "type": "java.lang.Long",
+      "description": "获取不到数据时的休眠时间",
+      "sourceType": "cn.ricardo.starter.properties.CanalProperties"
+    },
+    {
+      "name": "canal.username",
+      "type": "java.lang.String",
+      "description": "账户，如果不设置，默认为\"\"",
+      "sourceType": "cn.ricardo.starter.properties.CanalProperties"
+    }
+  ],
+  "hints": []
+}

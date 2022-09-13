@@ -79,16 +79,16 @@ private String teacherNo;
 1. 项目组成
 
 ```
-CanalProperties			--> 将配置实例化为对象。
-@EnableCanalClient 		--> 用于启动整体能力的注解。
-@CanalMonitor  	   		--> 用于将监听操作具现到具体的数据库、数据表。
+CanalProperties			    --> 将配置实例化为对象。
+@EnableCanalClient 		    --> 用于启动整体能力的注解。
+@CanalMonitor  	   		    --> 用于将监听操作具现到具体的数据库、数据表。
 CanalAutoConfiguration  	--> 自动配置类，整体服务的开启者。
-SpringListenerEvent		--> Spring初始化事件。
+SpringListenerEvent		    --> Spring初始化事件。
 CanalEntityHandler<?>		--> 监听操作入口，没有具体的接口控制行为的话，没办法反射找到对应操作。
 CanalMonitorCollectHandler	--> 后置处理，将所有监听类注册到容器。
-MessageHandler			--> 消息处理器，继承CanalMonitorCollectHandler，拥有其收集的所有监听Bean。
+MessageHandler			    --> 消息处理器，继承CanalMonitorCollectHandler，拥有其收集的所有监听Bean。
 CanalEntityHandlerProxy		--> 作为行数据的具体处理对象，是CanalEntityHandler接口实现类的封装对象，反射调用等等操作。
-GeneralUtil			--> 内部使用工具。
+GeneralUtil			        --> 内部使用工具。
 ```
 
 

@@ -2,8 +2,6 @@ package cn.ricardo.starter.handler;
 
 import cn.ricardo.starter.annotation.CanalMonitor;
 
-import java.util.ListIterator;
-
 /**
  * @author wcp
  * @since 2022/9/10

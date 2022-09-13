@@ -24,7 +24,7 @@ public @interface CanalMonitor {
     String tableName() default "";
 
     /**
-     * 是否监听DDL操作 (暂时没做)
+     * 是否监听DDL操作
      */
     boolean ddl() default false;
 }

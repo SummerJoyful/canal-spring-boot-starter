@@ -8,7 +8,8 @@ public enum OperateEnum {
 
     INSERT("insert"),
     UPDATE("update"),
-    DELETE("delete");
+    DELETE("delete"),
+    DDL("ddl");
 
     private final String name;
 

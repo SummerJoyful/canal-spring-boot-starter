@@ -11,9 +11,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 /**
  * 包装类，实现调用方法
@@ -27,8 +29,11 @@ public class CanalEntityHandlerProxy extends AbstractCanalEntityHandler {
 
     private final CanalEntityHandler<?> canalEntityHandler;
 
-    public CanalEntityHandlerProxy(CanalEntityHandler<?> canalEntityHandler) {
+    private final boolean isDdl;
+
+    public CanalEntityHandlerProxy(CanalEntityHandler<?> canalEntityHandler, boolean isDdl) {
         this.canalEntityHandler = canalEntityHandler;
+        this.isDdl = isDdl;
     }
 
     public void insertOperation(List<CanalEntry.RowData> rowDataList) {
@@ -38,6 +43,22 @@ public class CanalEntityHandlerProxy extends AbstractCanalEntityHandler {
 
     public void deleteOperation(List<CanalEntry.RowData> rowDataList) {
         generalOperation(rowDataList, OperateEnum.DELETE.getName());
+    }
+
+    @Override
+    public void ddlOperation(CanalEntry.RowChange rowChange) {
+        if (rowChange.getIsDdl() && isDdl) {
+            String ddlName = OperateEnum.DDL.getName();
+            // 正则过滤掉 注释
+            Pattern pattern = Pattern.compile("(?ms)('(?:''|[^'])*')|--.*?$|/\\*.*?\\*/|#.*?$|");
+            String result = pattern.matcher(rowChange.getSql()).replaceAll("$1");
+            try {
+                MethodUtils.invokeMethod(canalEntityHandler, ddlName, result);
+            } catch (Exception e) {
+                log.error("[{}] 实体类注入出现错误: {}", ddlName, ExceptionUtils.getMessage(e));
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

@@ -32,7 +32,11 @@ abstract class AbstractCanalEntityHandler {
         List<CanalEntry.RowData> rowDataList = rowChange.getRowDatasList();
         // 执行
         Consumer<List<CanalEntry.RowData>> consumer = consumerMap.get(eventType);
-        if (null != consumer) consumer.accept(rowDataList);
+        if (null != consumer) {
+            consumer.accept(rowDataList);
+        } else if (CanalEntry.EventType.ALTER.equals(eventType)) {
+            ddlOperation(rowChange);
+        }
     }
 
     public abstract void insertOperation(List<CanalEntry.RowData> rowDataList);
@@ -40,4 +44,6 @@ abstract class AbstractCanalEntityHandler {
     public abstract void updateOperation(List<CanalEntry.RowData> rowDataList);
 
     public abstract void deleteOperation(List<CanalEntry.RowData> rowDataList);
+
+    public abstract void ddlOperation(CanalEntry.RowChange rowChange);
 }

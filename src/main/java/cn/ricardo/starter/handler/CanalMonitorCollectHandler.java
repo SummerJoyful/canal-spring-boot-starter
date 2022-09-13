@@ -43,7 +43,7 @@ public class CanalMonitorCollectHandler implements BeanPostProcessor {
             return;
         // 加入容器 (控制小写)
         String key = StringUtils.lowerCase(databaseName + "." + tableName);
-        map.put(key, new CanalEntityHandlerProxy((CanalEntityHandler<?>) bean));
+        map.put(key, new CanalEntityHandlerProxy((CanalEntityHandler<?>) bean, canalMonitor.ddl()));
     }
 
 }

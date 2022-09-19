@@ -32,14 +32,11 @@ class GeneralUtil {
     private GeneralUtil() {
     }
 
-    private static final String HANDLER_NAME = CanalEntityHandler.class.getName();
-
     private static final String[] PARSE_PATTERNS = {
             "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM",
             "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM",
             "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM"
     };
-
 
     /**
      * 获取接口实现类上的接口泛型类型
@@ -47,20 +44,22 @@ class GeneralUtil {
      * @param clazz 接口实现类
      * @return 泛型Class
      **/
-    static Class<?> getInterfaceClassTypeParameter(Class<?> clazz) {
-        // 实现了几个接口
+    static Class<?> getGenericsOnInterface(Class<?> clazz) {
         Class<?> result = null;
+        // 获取类实现的所有接口，包括参数化类型和Class类型
         Type[] genericInterfaces = clazz.getGenericInterfaces();
         if (0 == genericInterfaces.length) {
             throw new RuntimeException("请指定类 " + clazz + " 实现接口 CanalEntityHandler<?>");
         }
 
         for (Type type : genericInterfaces) {
+            // 在这里做判断，如果接口拥有泛型，则为包装类型ParameterizedTypeImpl；如果没有泛型，则只是Class
+            if (type instanceof Class) {
+                continue;
+            }
             ParameterizedType parameterizedType = (ParameterizedType) type;
-            // CanalEntityHandler<?> 接口类全限定名
-            String typeName = parameterizedType.getRawType().getTypeName();
-            // 过滤非目标接口
-            if (!HANDLER_NAME.equals(typeName)) {
+            // 判断是否为CanalEntityHandler，不为该接口则直接跳过
+            if (!CanalEntityHandler.class.equals(parameterizedType.getRawType())) {
                 continue;
             }
             // 获取接口上的具体泛型类型
@@ -101,8 +100,8 @@ class GeneralUtil {
             }
             // 未加name属性，必然是驼峰，转为下划线即可 (短路与，不计算后面，不会产生空指针)
             String key = Objects.nonNull(id) || StringUtils.isBlank(column.name())
-                            ? camelToUnderline(field.getName())
-                            : StringUtils.lowerCase(column.name());
+                    ? camelToUnderline(field.getName())
+                    : StringUtils.lowerCase(column.name());
             fieldMap.put(key, field);
         }
         return fieldMap;

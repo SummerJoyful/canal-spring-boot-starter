@@ -72,7 +72,7 @@ public class CanalEntityHandlerProxy extends AbstractCanalEntityHandler {
             List<CanalEntry.Column> columnList = OperateEnum.INSERT.getName().equals(operateName)
                     ? rowData.getAfterColumnsList() : rowData.getBeforeColumnsList();
             // 获取实体类Class
-            Class<?> entityClass = GeneralUtil.getInterfaceClassTypeParameter(canalEntityHandler.getClass());
+            Class<?> entityClass = GeneralUtil.getGenericsOnInterface(canalEntityHandler.getClass());
 
             try {
                 Object entity = fillEntity(entityClass, columnList);
@@ -124,7 +124,7 @@ public class CanalEntityHandlerProxy extends AbstractCanalEntityHandler {
             List<CanalEntry.Column> newColumnList = rowData.getAfterColumnsList();
             List<CanalEntry.Column> oldColumnList = rowData.getBeforeColumnsList();
             // 获取类上的泛型类型 (其实就是实体类)
-            Class<?> entityClass = GeneralUtil.getInterfaceClassTypeParameter(canalEntityHandler.getClass());
+            Class<?> entityClass = GeneralUtil.getGenericsOnInterface(canalEntityHandler.getClass());
             // 通过Class创建对象，注入数据 (TODO 只能通过反射注入，直接调用方法会导致类型问题!!!)
             // 循环 newColumnList 和 oldColumnsList 组合数据，然后在循环中执行方法，先需要创建出实体对象
             executeUpdate(entityClass, newColumnList, oldColumnList);

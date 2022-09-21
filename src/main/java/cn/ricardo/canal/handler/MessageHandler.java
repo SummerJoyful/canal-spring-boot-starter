@@ -1,8 +1,8 @@
-package cn.ricardo.starter.handler;
+package cn.ricardo.canal.handler;
 
-import cn.ricardo.starter.event.SpringListenerEvent;
-import cn.ricardo.starter.properties.CanalProperties;
-import cn.ricardo.starter.proxy.CanalEntityHandlerProxy;
+import cn.ricardo.canal.event.SpringListenerEvent;
+import cn.ricardo.canal.properties.CanalProperties;
+import cn.ricardo.canal.proxy.CanalEntityHandlerProxy;
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.Message;

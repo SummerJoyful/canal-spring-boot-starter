@@ -1,9 +1,9 @@
-package cn.ricardo.starter.autoconfiguration;
+package cn.ricardo.canal.autoconfiguration;
 
-import cn.ricardo.starter.event.SpringListenerEvent;
-import cn.ricardo.starter.handler.CanalMonitorCollectHandler;
-import cn.ricardo.starter.handler.MessageHandler;
-import cn.ricardo.starter.properties.CanalProperties;
+import cn.ricardo.canal.event.SpringListenerEvent;
+import cn.ricardo.canal.handler.CanalMonitorCollectHandler;
+import cn.ricardo.canal.handler.MessageHandler;
+import cn.ricardo.canal.properties.CanalProperties;
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;

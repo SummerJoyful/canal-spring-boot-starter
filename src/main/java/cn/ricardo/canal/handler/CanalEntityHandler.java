@@ -1,6 +1,6 @@
-package cn.ricardo.starter.handler;
+package cn.ricardo.canal.handler;
 
-import cn.ricardo.starter.annotation.CanalMonitor;
+import cn.ricardo.canal.annotation.CanalMonitor;
 
 /**
  * @author wcp

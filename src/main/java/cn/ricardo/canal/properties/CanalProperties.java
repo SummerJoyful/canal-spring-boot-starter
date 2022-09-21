@@ -1,4 +1,4 @@
-package cn.ricardo.starter.properties;
+package cn.ricardo.canal.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -1,7 +1,6 @@
-package cn.ricardo.starter.proxy;
+package cn.ricardo.canal.proxy;
 
-import cn.ricardo.starter.handler.CanalEntityHandler;
-import com.alibaba.otter.canal.protocol.CanalEntry;
+import cn.ricardo.canal.handler.CanalEntityHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.util.CollectionUtils;

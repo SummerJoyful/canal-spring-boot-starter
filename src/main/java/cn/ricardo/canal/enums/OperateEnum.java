@@ -1,4 +1,4 @@
-package cn.ricardo.starter.enums;
+package cn.ricardo.canal.enums;
 
 /**
  * @author wcp

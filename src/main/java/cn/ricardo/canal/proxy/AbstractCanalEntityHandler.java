@@ -1,11 +1,7 @@
-package cn.ricardo.starter.proxy;
+package cn.ricardo.canal.proxy;
 
-import cn.ricardo.starter.handler.CanalEntityHandler;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

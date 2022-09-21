@@ -1,7 +1,7 @@
-package cn.ricardo.starter.handler;
+package cn.ricardo.canal.handler;
 
-import cn.ricardo.starter.annotation.CanalMonitor;
-import cn.ricardo.starter.proxy.CanalEntityHandlerProxy;
+import cn.ricardo.canal.annotation.CanalMonitor;
+import cn.ricardo.canal.proxy.CanalEntityHandlerProxy;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

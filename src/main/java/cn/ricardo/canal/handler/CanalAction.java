@@ -1,4 +1,4 @@
-package cn.ricardo.starter.handler;
+package cn.ricardo.canal.handler;
 
 /**
  * Canal线程监听开始、关闭

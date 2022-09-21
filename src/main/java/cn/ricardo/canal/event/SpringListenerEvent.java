@@ -1,4 +1,4 @@
-package cn.ricardo.starter.event;
+package cn.ricardo.canal.event;
 
 import org.springframework.beans.BeansException;
 import org.springframework.boot.ApplicationArguments;

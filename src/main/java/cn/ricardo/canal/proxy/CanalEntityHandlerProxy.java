@@ -1,7 +1,7 @@
-package cn.ricardo.starter.proxy;
+package cn.ricardo.canal.proxy;
 
-import cn.ricardo.starter.enums.OperateEnum;
-import cn.ricardo.starter.handler.CanalEntityHandler;
+import cn.ricardo.canal.enums.OperateEnum;
+import cn.ricardo.canal.handler.CanalEntityHandler;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;

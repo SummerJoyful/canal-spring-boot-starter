@@ -1,6 +1,6 @@
-package cn.ricardo.starter.annotation;
+package cn.ricardo.canal.annotation;
 
-import cn.ricardo.starter.handler.CanalMonitorCollectHandler;
+import cn.ricardo.canal.handler.CanalMonitorCollectHandler;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

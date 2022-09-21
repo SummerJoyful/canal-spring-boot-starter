@@ -1,4 +1,4 @@
-package cn.ricardo.starter.annotation;
+package cn.ricardo.canal.annotation;
 
 import java.lang.annotation.*;
 

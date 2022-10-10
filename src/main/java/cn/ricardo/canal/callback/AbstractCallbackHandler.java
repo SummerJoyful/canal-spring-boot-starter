@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 abstract class AbstractCallbackHandler {
 
-    public final void parseAndExecute(CanalEntry.RowChange rowChange) {
+    public final void handle(CanalEntry.RowChange rowChange) {
         // 获取更新类型
         CanalEntry.EventType eventType = rowChange.getEventType();
         Operation operation = Operation.match(eventType);

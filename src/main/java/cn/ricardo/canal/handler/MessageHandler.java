@@ -130,7 +130,7 @@ public class MessageHandler extends CanalMonitorCollectHandler implements CanalA
                 CanalEntry.RowChange rowChange = CanalEntry.RowChange.parseFrom(entry.getStoreValue());
 
                 // 交给包装类处理
-                handlerProxy.parseAndExecute(rowChange);
+                handlerProxy.handle(rowChange);
             }
         }
     }

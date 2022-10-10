@@ -1,8 +1,8 @@
 package cn.ricardo.canal.handler;
 
+import cn.ricardo.canal.callback.CanalEntityCallBackHandler;
 import cn.ricardo.canal.event.SpringListenerEvent;
 import cn.ricardo.canal.properties.CanalProperties;
-import cn.ricardo.canal.proxy.CanalEntityHandlerProxy;
 import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.Message;
@@ -81,7 +81,7 @@ public class MessageHandler extends CanalMonitorCollectHandler implements CanalA
             this.runner.interrupt();
         }
         // TODO 结束后，是否需要断开 connector
-
+        canalConnector.disconnect();
     }
 
     @SuppressWarnings("BusyWait")
@@ -121,7 +121,7 @@ public class MessageHandler extends CanalMonitorCollectHandler implements CanalA
             if (CanalEntry.EntryType.ROWDATA.equals(entry.getEntryType())) {
                 // 拼接key (限制小写)
                 String key = StringUtils.lowerCase(entry.getHeader().getSchemaName() + "." + entry.getHeader().getTableName());
-                CanalEntityHandlerProxy handlerProxy = map.get(key);
+                CanalEntityCallBackHandler handlerProxy = map.get(key);
                 // 没有的话表示没有监控该表，直接跳过
                 if (Objects.isNull(handlerProxy))
                     continue;

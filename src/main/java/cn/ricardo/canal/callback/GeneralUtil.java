@@ -1,4 +1,4 @@
-package cn.ricardo.canal.proxy;
+package cn.ricardo.canal.callback;
 
 import cn.ricardo.canal.handler.CanalEntityHandler;
 import org.apache.commons.lang3.StringUtils;

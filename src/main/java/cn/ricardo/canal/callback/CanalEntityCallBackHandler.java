@@ -1,4 +1,4 @@
-package cn.ricardo.canal.proxy;
+package cn.ricardo.canal.callback;
 
 import cn.ricardo.canal.enums.OperateEnum;
 import cn.ricardo.canal.handler.CanalEntityHandler;
@@ -17,20 +17,20 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
- * 包装类，实现调用方法
+ * 回调处理类，实现调用方法
  *
  * @author wcp
  * @since 2022/9/10
  */
-public class CanalEntityHandlerProxy extends AbstractCanalEntityHandler {
+public class CanalEntityCallBackHandler extends AbstractCallbackHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(CanalEntityHandlerProxy.class);
+    private static final Logger log = LoggerFactory.getLogger(CanalEntityCallBackHandler.class);
 
     private final CanalEntityHandler<?> canalEntityHandler;
 
     private final boolean isDdl;
 
-    public CanalEntityHandlerProxy(CanalEntityHandler<?> canalEntityHandler, boolean isDdl) {
+    public CanalEntityCallBackHandler(CanalEntityHandler<?> canalEntityHandler, boolean isDdl) {
         this.canalEntityHandler = canalEntityHandler;
         this.isDdl = isDdl;
     }

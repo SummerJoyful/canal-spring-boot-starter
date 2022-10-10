@@ -1,7 +1,7 @@
 package cn.ricardo.canal.handler;
 
 import cn.ricardo.canal.annotation.CanalMonitor;
-import cn.ricardo.canal.proxy.CanalEntityHandlerProxy;
+import cn.ricardo.canal.callback.CanalEntityCallBackHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class CanalMonitorCollectHandler implements BeanPostProcessor {
 
-    protected final ConcurrentHashMap<String, CanalEntityHandlerProxy> map = new ConcurrentHashMap<>();
+    protected final ConcurrentHashMap<String, CanalEntityCallBackHandler> map = new ConcurrentHashMap<>();
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
@@ -43,7 +43,7 @@ public class CanalMonitorCollectHandler implements BeanPostProcessor {
             return;
         // 加入容器 (控制小写)
         String key = StringUtils.lowerCase(databaseName + "." + tableName);
-        map.put(key, new CanalEntityHandlerProxy((CanalEntityHandler<?>) bean, canalMonitor.ddl()));
+        map.put(key, new CanalEntityCallBackHandler((CanalEntityHandler<?>) bean, canalMonitor.ddl()));
     }
 
 }
